@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const serverless = require("serverless-http");
 const authRoutes = require("../routes/auth-routes/index");
 const mediaRoutes = require("../routes/instructor-routes/media-routes");
 const instructorCourseRoutes = require("../routes/instructor-routes/course-routes");
@@ -54,3 +55,4 @@ app.get("/", (req, res) => {
 //   console.log(`Server is now running on port ${PORT}`);
 // });
 module.exports = app;
+module.exports.handler = serverless(app);
